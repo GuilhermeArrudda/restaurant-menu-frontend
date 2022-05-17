@@ -1,16 +1,15 @@
 import ResetStyleCSS from './styles/ResetStyleCSS'
 import GlobalStyle from './styles/GlobalStyle'
+import PagesRoutes from './Routes'
 
 function App() {
-  return (
-			<>
+	return (
+		<>
 			<ResetStyleCSS/>
 			<GlobalStyle/>
-			<div className="App">
-			Olá mundo!
-			</div>
+			<PagesRoutes/>
 		</>
-		);
+	)
 }
 
-export default App;
+export default App
