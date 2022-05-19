@@ -10,32 +10,23 @@ function Homepage() {
 		setShowMenu(!showMenu)
 	}
 
+	let pageStyle
+
+	showMenu ? pageStyle = styles.pageBlackout : pageStyle = styles.page
+
 	return (
 		<>
 			<OptionsMenu toggleDrawer={toggleDrawer} showMenu={showMenu}/>
-			{showMenu ? 
-				<Box sx={styles.pageBlackout}>
-					<Box sx={styles.page}>
-						<List>
-							<ListItem>Testando</ListItem>
-							<ListItem>Testando</ListItem>
-							<ListItem>Testando</ListItem>
-							<ListItem>Testando</ListItem>
-							<ListItem>Testando</ListItem>
-						</List>
-					</Box>
-				</Box>: 
-				<Box sx={styles.page}>
-					<Typography sx={styles.title}>Trending</Typography>
-					<List>
-						<ListItem>Testando</ListItem>
-						<ListItem>Testando</ListItem>
-						<ListItem>Testando</ListItem>
-						<ListItem>Testando</ListItem>
-						<ListItem>Testando</ListItem>
-					</List>
-				</Box>
-			}
+
+			<Box sx={pageStyle}>
+				<List>
+					<ListItem>Testando</ListItem>
+					<ListItem>Testando</ListItem>
+					<ListItem>Testando</ListItem>
+					<ListItem>Testando</ListItem>
+					<ListItem>Testando</ListItem>
+				</List>
+			</Box>
 		</>
 	)
 }
