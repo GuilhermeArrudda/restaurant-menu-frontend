@@ -1,8 +1,12 @@
 import { styled, useTheme } from '@mui/material/styles'
 import { AppBar as MuiAppBar, Box, CssBaseline, Divider, Drawer as MuiDrawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
 import { ChevronLeft, ChevronRight, Menu, Instagram, Facebook, WhatsApp, Person, ShoppingCart, ShoppingBasket, Login, ThumbUp, Logout } from '@mui/icons-material'
+import useAuth from '../../hooks/useAuth'
+import api from '../../services/api'
+import { errorModal, successModal } from '../../factories/modals'
+import { useNavigate } from 'react-router-dom'
 
-const drawerWidth = 280
+const drawerWidth = 150
 
 const openedMixin = (theme) => ({
 	width: drawerWidth,
@@ -19,14 +23,15 @@ const closedMixin = (theme) => ({
 		duration: theme.transitions.duration.leavingScreen,
 	}),
 	overflowX: 'hidden',
-	width: `calc(${theme.spacing(7)} + 1px)`,
+	width: `calc(${theme.spacing(6)} + 1px)`,
 	[theme.breakpoints.up('sm')]: {
-		width: `calc(${theme.spacing(8)} + 1px)`,
+		width: `calc(${theme.spacing(7)} + 1px)`,
 	},
 })
 
 const DrawerHeader = styled('div')(({ theme }) => ({
 	display: 'flex',
+	width: drawerWidth,
 	alignItems: 'center',
 	justifyContent: 'flex-end',
 	padding: theme.spacing(0, 1),
@@ -42,7 +47,6 @@ const AppBar = styled(MuiAppBar, {
 		duration: theme.transitions.duration.leavingScreen,
 	}),
 	...(showMenu && {
-		marginLeft: drawerWidth,
 		width: `calc(100% - ${drawerWidth}px)`,
 		transition: theme.transitions.create(['width', 'margin'], {
 			easing: theme.transitions.easing.sharp,
@@ -70,13 +74,15 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'showMe
 
 export default function OptionsMenu({ toggleDrawer, showMenu }) {
 	const theme = useTheme()
+	const { logout, auth } = useAuth()
+	let navigate = useNavigate()
 	const userOptions = [
 		{icon: <Login/>, name: 'Login', path: 'login'},
 		{icon: <Person/>, name: 'Meus Dados', path: 'account'},
 		{icon: <ShoppingCart/>, name: 'Carrinho', path: 'cart'},
 		{icon: <ShoppingBasket/>, name: 'Meus Pedidos', path: 'orders'},
-		{icon: <ThumbUp/>, name:'Avaliação e Comentários', path: 'avaliations'},
-		{icon: <Logout/>, name: 'Encerrar Sessão', path: 'logout'}
+		{icon: <ThumbUp/>, name:'Avaliação', path: 'validations'},
+		{icon: <Logout/>, name: 'Logout', path: 'logout'}
 	]
 	const socials = [
 		{icon: <WhatsApp/>, name: 'Whatsapp', path: 'whatsapp'},
@@ -84,8 +90,57 @@ export default function OptionsMenu({ toggleDrawer, showMenu }) {
 		{icon: <Instagram/>, name: 'Instagram', path: 'instagram'}
 	]
 
+	const styles = showMenu ? 30 : 100
+
+	function handleLogout() {
+		!auth && errorModal('Você ainda não se logou', 'warning')
+		api.logout(auth)
+			.then(() => {
+				logout()
+				successModal('Você se deslogou com sucesso! Espero que tenha aproveitado a praia, volte sempre!')
+				setTimeout(() => {
+					window.location.reload()
+				}, 1500)
+			})
+			.catch(({ response }) => {
+				errorModal('Problemas com o servidor, sinto muito, tente novamente mais tarde 😢!')
+			})
+	}
+
+	function handleClick(path) {
+		switch (path) {
+		case 'login':
+			navigate('/login')
+			break	
+		case 'logout':
+			handleLogout()
+			break
+		case 'account':
+			navigate('/account')
+			break
+		case 'cart':
+			navigate('/cart')
+			break
+		case 'orders':
+			navigate('/orders')
+			break
+		case 'validations':
+			navigate('/validations')
+			break
+		case 'whatsapp':
+			navigate('/whatsapp')
+			break
+		case 'facebook':
+			navigate('/facebook')
+			break
+		case 'instagram':
+			navigate('/instagram')
+			break
+		}
+	}
+
 	return (
-		<Box sx={{ display: 'flex'}}>
+		<Box sx={{ display: 'flex', height: '0'}}>
 			<CssBaseline />
 			<AppBar position="fixed" showMenu={showMenu} sx={{backgroundColor: '#000'}}>
 				<Toolbar>
@@ -108,8 +163,8 @@ export default function OptionsMenu({ toggleDrawer, showMenu }) {
 			</AppBar>
 			<Drawer variant="permanent" showMenu={showMenu}>
 				<DrawerHeader>
-					<IconButton onClick={toggleDrawer}>
-						Opções do Menu
+					<IconButton onClick={toggleDrawer} sx={{fontSize: 30}}>
+						Menu
 						{theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
 					</IconButton>
 				</DrawerHeader>
@@ -118,10 +173,11 @@ export default function OptionsMenu({ toggleDrawer, showMenu }) {
 					{userOptions.map((o) => (
 						<ListItem
 							key={o.name}
+							onClick={() => handleClick(o.path)}
 							disablePadding
 						>
 							<ListItemButton>
-								<ListItemIcon>{o.icon}</ListItemIcon>
+								<ListItemIcon sx={{minWidth: styles}}>{o.icon}</ListItemIcon>
 								<ListItemText primary={o.name}/>
 							</ListItemButton>
 						</ListItem>
@@ -132,10 +188,11 @@ export default function OptionsMenu({ toggleDrawer, showMenu }) {
 					{socials.map((s) => (
 						<ListItem
 							key={s.name}
+							onClick={() => handleClick(s.path)}
 							disablePadding
 						>
 							<ListItemButton>
-								<ListItemIcon>{s.icon}</ListItemIcon>
+								<ListItemIcon sx={{minWidth: styles}}>{s.icon}</ListItemIcon>
 								<ListItemText primary={s.name}/>
 							</ListItemButton>
 						</ListItem>
@@ -145,3 +202,4 @@ export default function OptionsMenu({ toggleDrawer, showMenu }) {
 		</Box>
 	)
 }
+
