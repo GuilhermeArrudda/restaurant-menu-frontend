@@ -11,6 +11,11 @@ function PagesRoutes () {
 				<Route path='/' element={<Homepage/>}/>
 				<Route path='/sign-up' element={<SignUp/>}/>
 				<Route path='/login' element={<Login/>}/>
+				{/* 				<Route path='/cart' element={<Cart/>}/>
+				<Route path='/account' element={<Account/>}/>
+				<Route path='/orders' element={<Orders/>}/>
+				<Route path='/Assessments' element={<Assessments/>}/> */}
+
 			</Routes>
 		</BrowserRouter>
 	)

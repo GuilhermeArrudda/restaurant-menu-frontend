@@ -1,7 +1,10 @@
-import { Box, List, ListItem, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import { useState } from 'react'
 import OptionsMenu from '../../components/Menu/Menu'
 import styles from './styles'
+import { Element } from 'react-scroll'
+import RestaurantMenu from '../../components/RestaurantMenu'
+import Welcome from '../../components/Welcome'
 
 function Homepage() {
 	const [showMenu, setShowMenu] = useState(false)
@@ -15,19 +18,16 @@ function Homepage() {
 	showMenu ? pageStyle = styles.pageBlackout : pageStyle = styles.page
 
 	return (
-		<>
+		<Box sx={pageStyle}>
 			<OptionsMenu toggleDrawer={toggleDrawer} showMenu={showMenu}/>
 
-			<Box sx={pageStyle}>
-				<List>
-					<ListItem>Testando</ListItem>
-					<ListItem>Testando</ListItem>
-					<ListItem>Testando</ListItem>
-					<ListItem>Testando</ListItem>
-					<ListItem>Testando</ListItem>
-				</List>
+			<Box sx={{position: 'absolute', overflowX: 'hidden', width: '100%', paddingTop: '60px'}}>
+				<Welcome to='menu'/>
+				<Element name='menu' className='element'>
+					<RestaurantMenu/>
+				</Element>
 			</Box>
-		</>
+		</Box>
 	)
 }
 export default Homepage

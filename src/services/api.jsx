@@ -26,10 +26,44 @@ function logout({token}) {
 	return axios.post(`${BASE_URL}/logout`, {}, config)
 }
 
+function getProducts() {
+	return axios.get(`${BASE_URL}/products`)
+}
+
+function getCart({token}) {
+	const config = makeConfig(token)
+
+	return axios.get(`${BASE_URL}/cart`, config)
+}
+
+function insertProduct({token}, id) {
+	const config = makeConfig(token)
+
+	return axios.post(`${BASE_URL}/cart`, id, config)
+}
+
+function deleteCartItem({token}, id) {
+	const config = makeConfig(token)
+
+	return axios.delete(`${BASE_URL}/cart/cartItem/${id}`, config)
+}
+
+function deleteShoppingSession({token}, id) {
+	const config = makeConfig(token)
+
+	return axios.delete(`${BASE_URL}/cart/shoppingSession/${id}`, config)
+}
+
+
 const api = {
 	signUp,
 	login,
-	logout
+	logout,
+	getProducts,
+	getCart,
+	insertProduct,
+	deleteCartItem,
+	deleteShoppingSession
 }
 
 export default api
