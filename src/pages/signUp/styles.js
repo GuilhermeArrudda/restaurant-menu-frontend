@@ -29,7 +29,6 @@ const styles = {
 		background: '#fff',
 		boxShadow: '0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)',
 		position: 'fixed',
-		'@media (max-width:901px)': { width: '80%' , ml: '50px'}
 	},
 	form: {
 		display: 'flex',
@@ -38,7 +37,6 @@ const styles = {
 		width: '600px',
 		background: '#fff',
 		position: 'relative',
-		'@media (max-width:901px)': { width: '80%' }
 	},
 	title: {
 		fontFamily: 'Raleway',
