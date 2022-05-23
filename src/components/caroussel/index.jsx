@@ -38,7 +38,7 @@ function ProductsFromMenu(props) {
 			autoPlay={false} 
 			indicatorContainerProps={{style:{display: 'none'}}}
 			animation={'slide'}
-			duration={1000}
+			duration={300}
 		>
 			{
 				products.map( (p, i) => <Item key={i} p={p} /> )

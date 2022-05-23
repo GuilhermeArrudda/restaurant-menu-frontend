@@ -6,11 +6,10 @@ import { Element } from 'react-scroll'
 import OptionsMenu from '../../components/Menu/Menu'
 import CartContent from '../../components/Table'
 import BasicTextFields from '../../components/WppMessage'
-import { errorModal } from '../../factories/modals'
+import { successModal } from '../../factories/modals'
 import useAuth from '../../hooks/useAuth'
 import api from '../../services/api'
 import styles from './styles'
-
 
 function Cart() {
 	const [showMenu, setShowMenu] = useState(false)
@@ -27,7 +26,7 @@ function Cart() {
 			const { data } = await api.getCart(auth)
 			if(!data){
 				navigate('/')
-				errorModal('Seu carrinho esta vazio, adicione itens antes de continuar')
+				successModal('Pedido enviado com sucesso!')
 			}
 			setCart(data.cartItens)
 		}
