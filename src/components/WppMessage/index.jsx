@@ -6,6 +6,7 @@ import { successModal } from '../../factories/modals'
 import useAuth from '../../hooks/useAuth'
 import api from '../../services/api'
 import styles from './styles'
+import { animateScroll } from 'react-scroll'
 
 export default function BasicTextFields({ rows }) {
 	const [disabled, setDisabled] = useState(false)
@@ -26,6 +27,10 @@ export default function BasicTextFields({ rows }) {
 			})
 	}
 
+	function toTop() {
+		animateScroll.scrollToTop()
+	}
+
 	return (
 		<Box
 			component="form"
@@ -41,7 +46,7 @@ export default function BasicTextFields({ rows }) {
 			/>
 			<Button 
 				sx={styles.button}
-				onClick={handleSubmitOrder}
+				onClick={() => {handleSubmitOrder(), toTop()}}
 				disabled={disabled}
 			>Enviar Pedido</Button>
 		</Box>

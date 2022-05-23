@@ -1,11 +1,9 @@
 import { Box, Button, Typography } from '@mui/material'
-import { Parallax } from 'react-parallax'
 import { Link } from 'react-scroll'
 import styles from './styles'
 
 function Welcome({ to }) {
 
-	const image3 = 'https://urbanarts.vteximg.com.br/arquivos/ids/4791689/quadro-barra-da-tijuca--calcadao-2.jpg?v=637202168330200000'
 
 	return (
 		
