@@ -28,8 +28,8 @@ function RestaurantMenu () {
 					</Box>
 				</Box>
 
-				<Box style={{position: 'relative', width: '100%'}}>
-					<Box sx={{ height: 650, width: '100%' }}>
+				<Box style={{position: 'relative', width: '50vw'}}>
+					<Box sx={{ height: 650, width: '50vw' }}>
 						<Box sx={styles.cardapio}>
 							<ProductsFromMenu/>
 						</Box>

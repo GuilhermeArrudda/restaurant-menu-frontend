@@ -7,7 +7,7 @@ const styles = {
 	paper: {
 		width: '100%',
 		background: '#00007d',
-		height: '650px',
+		height: '690px',
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'space-around',
@@ -25,6 +25,7 @@ const styles = {
 		fontStyle: 'italic',
 		fontSize: '16px',
 		alignSelf: 'start',
+		marginRight: '20px',
 		'&:hover': { opacity: '0.8', background: '#01603b' }
 	},
 }
