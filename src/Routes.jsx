@@ -2,10 +2,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Homepage from './pages/homepage/Homepage'
 import Login from './pages/login/Login'
 import SignUp from './pages/signUp/SignUp'
-import Cart from './pages/cart/Cart'
-import Account from './pages/account/Account'
-import Orders from './pages/orders/Orders'
-import Assessments from './pages/assessments/Assessments'
+import Cart from './pages/cart'
+import Account from './pages/account'
+import Orders from './pages/orders'
+import Assessments from './pages/assessments'
+
 
 function PagesRoutes () {
 
