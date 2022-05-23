@@ -5,6 +5,7 @@ import useAuth from '../../hooks/useAuth'
 import api from '../../services/api'
 import { errorModal, successModal } from '../../factories/modals'
 import { useNavigate } from 'react-router-dom'
+import { animateScroll } from 'react-scroll'
 
 const drawerWidth = 150
 
@@ -81,7 +82,7 @@ export default function OptionsMenu({ toggleDrawer, showMenu }) {
 		{icon: <Person/>, name: 'Meus Dados', path: 'account'},
 		{icon: <ShoppingCart/>, name: 'Carrinho', path: 'cart'},
 		{icon: <ShoppingBasket/>, name: 'Meus Pedidos', path: 'orders'},
-		{icon: <ThumbUp/>, name:'Avaliação', path: 'validations'},
+		{icon: <ThumbUp/>, name:'Avaliações', path: 'assessments'},
 		{icon: <Logout/>, name: 'Logout', path: 'logout'}
 	]
 	const socials = [
@@ -124,8 +125,8 @@ export default function OptionsMenu({ toggleDrawer, showMenu }) {
 		case 'orders':
 			navigate('/orders')
 			break
-		case 'validations':
-			navigate('/validations')
+		case 'assessments':
+			navigate('/assessments')
 			break
 		case 'whatsapp':
 			navigate('/whatsapp')
@@ -139,8 +140,12 @@ export default function OptionsMenu({ toggleDrawer, showMenu }) {
 		}
 	}
 
+	function toTop() {
+		animateScroll.scrollToTop()
+	}
+
 	return (
-		<Box sx={{ display: 'flex', height: '0'}}>
+		<Box sx={{ display: 'flex', height: '0' }}>
 			<CssBaseline />
 			<AppBar position="fixed" showMenu={showMenu} sx={{backgroundColor: '#000'}}>
 				<Toolbar>
@@ -173,7 +178,7 @@ export default function OptionsMenu({ toggleDrawer, showMenu }) {
 					{userOptions.map((o) => (
 						<ListItem
 							key={o.name}
-							onClick={() => handleClick(o.path)}
+							onClick={() => {handleClick(o.path), toTop()}}
 							disablePadding
 						>
 							<ListItemButton>
