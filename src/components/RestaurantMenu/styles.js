@@ -1,11 +1,14 @@
 const styles = {
 	cardapio: {
-		background: 'white',
-		width: '100%',
+		background: '#ffffffe9',
+		width: '600px',
+		height: '550px',
+		borderRadius: '50px',
 		position: 'absolute',
 		top: '50%',
-		left: '50%',
-		transform: 'translate(-50%,-50%)'
+		transform: 'translate(-50%,-50%)',
+		display: 'flex',
+		justifyContent: 'center'
 	},
 
 	buttonRed: {
@@ -36,9 +39,9 @@ const styles = {
 	},
 
 	box: {
-		height: 340, 
+		height: 300, 
 		width: '100%', 
-		background: '#bcf0ff', 
+		background: '#ffffffe9', 
 		display: 'flex', 
 		flexDirection: 'row', 
 		alignItems: 'center', 
@@ -53,7 +56,7 @@ const styles = {
 		alignItems: 'end', 
 		justifyContent: 'center', 
 		position: 'relative', 
-		width: '100%' 
+		width: '100vw' 
 	},
 
 	title: {

@@ -33,7 +33,7 @@ function ProductsFromMenu(props) {
 			sx={styles.carousel} 
 			navButtonsAlwaysVisible={true} 
 			NextIcon={<NavigateNext style={{ color: '#000', fontSize: '50px' }}/>}
-			PrevIcon={<NavigateBefore style={{ color: '#000', fontSize: '50px', marginLeft: '50px' }}/>}
+			PrevIcon={<NavigateBefore style={{ color: '#000', fontSize: '50px' }}/>}
 			navButtonsProps={{style:{background: 'none'}}}
 			autoPlay={false} 
 			indicatorContainerProps={{style:{display: 'none'}}}
@@ -74,53 +74,52 @@ function Item(props) {
 
 	return (
 
-		<Parallax bgImage={image3} strength={-200} style={styles.paper} key={props.p.id}>
-			<Card sx={{width: '300px', height: '500px'}}>
-				<CardMedia 
-					height='350px'
-					width='300px'
-					image={props.p.picture}
-					alt={props.p.name}
-					component='img'
-				/>
-				<CardContent>
-					<Typography variant='h5' component='div'>
-						{props.p.name}
-					</Typography>
-					<Typography color='text.secondary'>
+		<Card sx={{width: '400px', height: '550px', borderRadius: '20px', marginLeft: '100px', background: 'none' }}>
+			<CardMedia 
+				background= 'none'
+				height='350px'
+				width='400px'
+				image={props.p.picture}
+				alt={props.p.name}
+				component='img'
+			/>
+			<CardContent sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+				<Typography variant='h5' component='div' sx={{fontWeight: 700}}>
+					{props.p.name}
+				</Typography>
+				<Typography color='text.secondary' sx={{fontWeight: 700}}>
 						R$ {((props.p.price)/100).toFixed(2)}
-					</Typography>
-				</CardContent>
-				<CardActions sx={{display: 'flex', justifyContent: 'space-between'}}>
-					<Box sx={{ minWidth: 60 }}>
-						<FormControl fullWidth>
-							<InputLabel id="demo-simple-select-label">Unids</InputLabel>
-							<Select
-								labelId="demo-simple-select-label"
-								id="demo-simple-select"
-								value={quantity}
-								label="Unids"
-								onChange={handleChange}
-							>
-								<MenuItem value={1}>1</MenuItem>
-								<MenuItem value={2}>2</MenuItem>
-								<MenuItem value={3}>3</MenuItem>
-								<MenuItem value={4}>4</MenuItem>
-								<MenuItem value={5}>5</MenuItem>
-							</Select>
-						</FormControl>
-					</Box>
-					<Button 
-						size='small'
-						sx={styles.button}
-						onClick={() => {handleClick(props.p.id)}}
-						disabled={disabled}
-					>
-						<ShoppingCart/>
-					</Button>
-				</CardActions>
-			</Card>
-		</Parallax>
+				</Typography>
+			</CardContent>
+			<CardActions sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+				<Box sx={{ minWidth: 80, marginLeft: '20px'}}>
+					<FormControl fullWidth>
+						<InputLabel id="demo-simple-select-label">Unids</InputLabel>
+						<Select
+							labelId="demo-simple-select-label"
+							id="demo-simple-select"
+							value={quantity}
+							label="Unids"
+							onChange={handleChange}
+						>
+							<MenuItem value={1}>1</MenuItem>
+							<MenuItem value={2}>2</MenuItem>
+							<MenuItem value={3}>3</MenuItem>
+							<MenuItem value={4}>4</MenuItem>
+							<MenuItem value={5}>5</MenuItem>
+						</Select>
+					</FormControl>
+				</Box>
+				<Button 
+					size='small'
+					sx={styles.button}
+					onClick={() => {handleClick(props.p.id)}}
+					disabled={disabled}
+				>
+					<ShoppingCart/>
+				</Button>
+			</CardActions>
+		</Card>
 	)
 }
 

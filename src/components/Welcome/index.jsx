@@ -8,38 +8,37 @@ function Welcome({ to }) {
 	const image3 = 'https://urbanarts.vteximg.com.br/arquivos/ids/4791689/quadro-barra-da-tijuca--calcadao-2.jpg?v=637202168330200000'
 
 	return (
-		<Parallax bgImage={image3} strength={-200}>
-			<Box sx={{ height: 920 }}>
-				<Box sx={styles.background}>
-					<Box sx={styles.container}>
-						<Typography style={styles.title}>Bem vindos a Barraca do Gilvan!</Typography>
-						<Typography sx={styles.text}>
-							<span style={styles.underlineGreen}>
+		
+		<Box sx={{ height: 920 }}>
+			<Box sx={styles.background}>
+				<Box sx={styles.container}>
+					<Typography style={styles.title}>Bem vindos a Barraca do Gilvan!</Typography>
+					<Typography sx={styles.text}>
+						<span style={styles.underlineGreen}>
 								Eeei! Você com certeza fez 
-							</span>
+						</span>
 								algo 
-							<span style={styles.underlineRed}>
+						<span style={styles.underlineRed}>
 								pra merecer uma praia hoje. Que tal um refri bem gelado
-							</span> 
+						</span> 
 								e 
-							<span style={styles.underlineGreen}>
+						<span style={styles.underlineGreen}>
 								um aperitivo muito saboroso pra fazer seu dia feliz?
-							</span>
-						</Typography>
-						<Button sx={styles.button}>
-							<Link 
-								activeClass='active' 
-								className='menu' 
-								to={to} 
-								spy={true} 
-								smooth={true} 
-								duration={1000} 
-							>Ver Cardápio</Link>
-						</Button>
-					</Box>
+						</span>
+					</Typography>
+					<Button sx={styles.button}>
+						<Link 
+							activeClass='active' 
+							className='menu' 
+							to={to} 
+							spy={true} 
+							smooth={true} 
+							duration={1000} 
+						>Ver Cardápio</Link>
+					</Button>
 				</Box>
 			</Box>
-		</Parallax>
+		</Box>
 	)
 }
 
