@@ -33,14 +33,9 @@ const styles = {
 		width: '50px',
 		height: '50px',
 		borderRadius: '20px',
-		textTransform: 'none',
-		fontFamily: 'Raleway',
-		fontWeight: '500',
-		fontStyle: 'italic',
 		fontSize: '16px',
-		alignSelf: 'start',
-		marginRight: '20px',
-		padding: '20px',
+		alignSelf: 'center',
+		marginRight: '50px',
 		'&:hover': { opacity: '0.8', background: '#01603b' }
 	},
 }
