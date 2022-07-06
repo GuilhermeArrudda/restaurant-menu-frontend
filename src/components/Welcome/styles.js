@@ -9,6 +9,12 @@ const styles = {
 		fontWeight: '700',
 		fontSize: '50px',
 		marginBottom: '60px',
+		'@media (max-width: 750px)': {
+			width: '300px',
+			height: '25px',
+			fontSize: '30px'
+		}
+
 	},
 
 	button: {
@@ -23,7 +29,12 @@ const styles = {
 		fontStyle: 'italic',
 		fontSize: '16px',
 		alignSelf: 'start',
-		'&:hover': { opacity: '0.8', background: '#01603b' }
+		'&:hover': { opacity: '0.8', background: '#01603b' },
+		'@media (max-width: 750px)': {
+			width: '100px',
+			height: '40px',
+			fontSize: '12px'
+		}
 	},
 
 	text: {
@@ -32,6 +43,9 @@ const styles = {
 		fontWeight: '500',
 		fontSize: '25px',
 		color: '#fff',
+		'@media (max-width: 750px)': {
+			width: '300px'
+		}
 
 	},
 
@@ -52,25 +66,26 @@ const styles = {
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'start',
-		height: '1000px',
 		gap: '50px',
-		transform: 'translate(-60%,-40%)',
-		width: '500px',
-		marginLeft: '280px',
-		paddingLeft: '15px',
-		paddingTop: '300px',
-		position: 'relative',
-		top: 500,
+		'@media (max-width: 750px)': {
+			gap: '25px'
+		}
 	},
 
 	background: {
-		position: 'relative',
-		transform: 'translate(-60%,-40%)',
+		alignSelf: 'start',
+		marginLeft: '10%',
 		width: '500px',
-		height: '1650px',
+		height: '100%',
 		paddingLeft: '15px',
-		paddingTop: '300px',
-		background: '#8209277f'
+		paddingRight: '15px',
+		paddingTop: '200px',
+		paddingBottom: '340px',
+		background: '#8209277f',
+		'@media (max-width: 750px)': {
+			width: '300px',
+			alignSelf: 'center',
+		}
 	}
 }
 

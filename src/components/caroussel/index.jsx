@@ -3,14 +3,9 @@ import { Button, Card, CardMedia, CardContent, Typography, CardActions, InputLab
 import { NavigateBefore, NavigateNext, ShoppingCart } from '@mui/icons-material'
 import api from '../../services/api'
 import { useEffect, useState } from 'react'
-import { Parallax } from 'react-parallax'
 import styles from './styles'
 import useAuth from '../../hooks/useAuth'
 import { successModal } from '../../factories/modals'
-
-
-const image3 = 'https://urbanarts.vteximg.com.br/arquivos/ids/4791689/quadro-barra-da-tijuca--calcadao-2.jpg?v=637202168330200000'
-
 
 function ProductsFromMenu(props) {
 	const [products, setProducts] = useState([])
@@ -32,7 +27,7 @@ function ProductsFromMenu(props) {
 		<Carousel 
 			sx={styles.carousel} 
 			navButtonsAlwaysVisible={true} 
-			NextIcon={<NavigateNext style={{ color: '#000', fontSize: '50px' }}/>}
+			NextIcon={<NavigateNext style={{ color: '#000', fontSize: '50px', position: 'relative', left: '5px'}}/>}
 			PrevIcon={<NavigateBefore style={{ color: '#000', fontSize: '50px' }}/>}
 			navButtonsProps={{style:{background: 'none'}}}
 			autoPlay={false} 
@@ -74,7 +69,7 @@ function Item(props) {
 
 	return (
 
-		<Card sx={{width: '400px', height: '550px', borderRadius: '20px', marginLeft: '100px', background: 'none' }}>
+		<Card sx={styles.card}>
 			<CardMedia 
 				background= 'none'
 				height='350px'

@@ -83,14 +83,10 @@ function SignUp() {
 		setShowMenu(!showMenu)
 	}
 
-	let pageStyle
-
-	showMenu ? pageStyle = styles.pageBlackout : pageStyle = styles.page
-
 	return (
 		<>
 			<OptionsMenu toggleDrawer={toggleDrawer} showMenu={showMenu}/>
-			<Box sx={pageStyle}>
+			<Box sx={styles.page}>
 				<Box sx={styles.boxForm}>
 					<Box component='form' onSubmit={handleSubmit} sx={styles.form}>
 						<Typography sx={styles.title}>Cadastre-se com o seu email</Typography>

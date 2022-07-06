@@ -1,7 +1,21 @@
 const styles = {
 	carousel: {
 		width: '100%',
-		height: '650px',
+		height: '100%',
+		display: 'flex',
+		alignItems: 'start',
+	},
+
+	card: {
+		width: '300px', 
+		height: '510px',
+		borderRadius: '20px', 
+		marginLeft: '100px',
+		marginTop: '20px',
+		'@media (max-width: 750px)': {
+			marginTop: '20px',
+			marginLeft: '0px'
+		}
 	},
 	
 	paper: {
@@ -26,6 +40,7 @@ const styles = {
 		fontSize: '16px',
 		alignSelf: 'start',
 		marginRight: '20px',
+		padding: '20px',
 		'&:hover': { opacity: '0.8', background: '#01603b' }
 	},
 }

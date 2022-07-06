@@ -1,6 +1,6 @@
 import { styled, useTheme } from '@mui/material/styles'
 import { AppBar as MuiAppBar, Box, CssBaseline, Divider, Drawer as MuiDrawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
-import { ChevronLeft, ChevronRight, Menu, Instagram, Facebook, WhatsApp, Person, ShoppingCart, ShoppingBasket, Login, ThumbUp, Logout } from '@mui/icons-material'
+import { ChevronLeft, ChevronRight, Menu, Instagram, Facebook, WhatsApp, Person, ShoppingCart, ShoppingBasket, Login, ThumbUp, Logout, BeachAccess } from '@mui/icons-material'
 import useAuth from '../../hooks/useAuth'
 import api from '../../services/api'
 import { errorModal, successModal } from '../../factories/modals'
@@ -78,6 +78,7 @@ export default function OptionsMenu({ toggleDrawer, showMenu }) {
 	const { logout, auth } = useAuth()
 	let navigate = useNavigate()
 	const userOptions = [
+		{icon: <BeachAccess/>, name: 'Início', path: '/'},
 		{icon: <Login/>, name: 'Login', path: 'login'},
 		{icon: <Person/>, name: 'Meus Dados', path: 'account'},
 		{icon: <ShoppingCart/>, name: 'Carrinho', path: 'cart'},
@@ -110,6 +111,9 @@ export default function OptionsMenu({ toggleDrawer, showMenu }) {
 
 	function handleClick(path) {
 		switch (path) {
+		case '/':
+			navigate('/')
+			break
 		case 'login':
 			navigate('/login')
 			break	
@@ -161,9 +165,6 @@ export default function OptionsMenu({ toggleDrawer, showMenu }) {
 					>
 						<Menu/>
 					</IconButton>
-					<Typography variant="h6" noWrap component="div">
-            Barraca
-					</Typography>
 				</Toolbar>
 			</AppBar>
 			<Drawer variant="permanent" showMenu={showMenu}>
@@ -207,4 +208,3 @@ export default function OptionsMenu({ toggleDrawer, showMenu }) {
 		</Box>
 	)
 }
-

@@ -75,10 +75,6 @@ function Login() {
 		setShowMenu(!showMenu)
 	}
 
-	let pageStyle
-
-	showMenu ? pageStyle = styles.pageBlackout : pageStyle = styles.page
-
 	return (
 		<Box>
 			<OptionsMenu toggleDrawer={toggleDrawer} showMenu={showMenu}/>
