@@ -1,20 +1,25 @@
 const styles = {
 	insideStyles: {
-		width: '800px',
+		width: '70%',
 		height: '500px',
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		background: '#ffffffe9',		
-		paddingTop: '15px',
+		paddingTop: '5px',
 		paddingBottom: '15px',
-		borderRadius: 5
+		borderRadius: '15px',
+		'@media (max-width: 750px)': {
+			marginLeft: '12%',
+			marginTop: '5%'
+		}
 	},
+	
 
 	input: {
 		fontFamily: 'Raleway',
-		width: '800px',
+		width: '100%',
 		borderRadius: 5,
 		marginBottom: '10px',
 	},

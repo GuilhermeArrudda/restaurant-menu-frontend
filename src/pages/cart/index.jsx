@@ -1,6 +1,5 @@
 import { Box } from '@mui/material'
 import { useEffect, useState } from 'react'
-import { Parallax } from 'react-parallax'
 import { useNavigate } from 'react-router-dom'
 import { Element } from 'react-scroll'
 import OptionsMenu from '../../components/Menu/Menu'
@@ -60,30 +59,15 @@ function Cart() {
 		setShowMenu(!showMenu)
 	}
 
-	let pageStyle
-
-	showMenu ? pageStyle = styles.pageBlackout : pageStyle = styles.page
-
-	const image3 = 'https://urbanarts.vteximg.com.br/arquivos/ids/4791689/quadro-barra-da-tijuca--calcadao-2.jpg?v=637202168330200000'
-
-	const test = {
-		height: '2500px'
-	}
-
 	return (
-		<Box sx={pageStyle}>
+		<Box sx={styles.page}>
 			<OptionsMenu toggleDrawer={toggleDrawer} showMenu={showMenu}/>
 
-			<Box sx={{width: '100%', paddingTop: '60px'}}>
-				<Parallax bgImageStyle={test} bgImage={image3} strength={-200} style={{height: '2000px'}}>
-					<Box sx={{height: '2000px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around'}}>
-						<CartContent to={'test2'} rows={rows}/>
-
-						<Element name='test2' className='element1'>
-							<BasicTextFields rows={rows}/>
-						</Element>
-					</Box>
-				</Parallax>
+			<Box sx={styles.parallax}>
+				<CartContent to={'test2'} rows={rows}/>
+				<Element name='test2' className='element1' style={styles.element}>
+					<BasicTextFields rows={rows}/>
+				</Element>
 			</Box>
 
 		</Box>

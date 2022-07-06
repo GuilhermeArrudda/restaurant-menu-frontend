@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@mui/material'
 import styles from './styles'
 import api from '../../services/api'
@@ -38,14 +39,13 @@ export default function CartContent({ to, rows }) {
 	
 	return (
 		<TableContainer component={Paper} sx={styles.insideStyles}>
-			<Table>
-				<TableHead>
+			<Table sx={styles.head}>
+				<TableHead >
 					<TableRow>
 						<TableCell sx={styles.rowHead}>Produtos</TableCell>
-						<TableCell align="center"sx={styles.rowHead}></TableCell>
-						<TableCell align="center"sx={styles.rowHead}>Quantidade</TableCell>
-						<TableCell align="center"sx={styles.rowHead}>Preço</TableCell>
-						<TableCell align="center"sx={styles.rowHead}>Total</TableCell>
+						<TableCell align="center" sx={styles.rowHead} sx={styles.displayNone}></TableCell>
+						<TableCell align="center" sx={styles.rowHead}>Qtde</TableCell>
+						<TableCell align="center" sx={styles.rowHead}>Preço</TableCell>
 						<TableCell align="center"></TableCell>
 					</TableRow>
 				</TableHead>
@@ -59,12 +59,12 @@ export default function CartContent({ to, rows }) {
 							<TableCell component="th" scope="row" sx={styles.rowBody}>
 								{row.name}
 							</TableCell>
-							<TableCell align="left">
+							<TableCell align="left" sx={styles.displayNone}>
 								<Box
 									component="img"
 									sx={{
-										height: 50,
-										width: 50,
+										height: '50px',
+										width: '50px',
 									}}
 									alt={row.name}
 									src={row.picture}
@@ -74,12 +74,12 @@ export default function CartContent({ to, rows }) {
 
 							<TableCell align="center" sx={styles.rowBody}>{row.quantity}</TableCell>
 							<TableCell align="center" sx={styles.rowBody}>R$ {((row.price)/100).toFixed(2)}</TableCell>
-							<TableCell align="center" sx={styles.rowBody}>R$ {((row.total)/100).toFixed(2)}</TableCell>
 							<TableCell align="center">
 								<Delete
 									onClick={() => {handleDeleteItem(row.productId)}}
 									disabled={disabled}
 									cursor='pointer'
+									sx={styles.delete}
 								/>
 							</TableCell>
 
@@ -90,11 +90,10 @@ export default function CartContent({ to, rows }) {
 					>
 						<TableCell align="center"></TableCell>
 						<TableCell align="center"></TableCell>
-						<TableCell align="center"></TableCell>
-						<TableCell align="center"></TableCell>
+						<TableCell align="center" sx={styles.rowBody}>SubTotal:</TableCell>
 						<TableCell 
 							align="center" 
-							sx={{fontWeight: 700, fontSize: 20}}
+							sx={styles.rowBottom}
 						>R$ {(finalPrice/100).toFixed(2)}</TableCell>
 					</TableRow>
 				</TableBody>
