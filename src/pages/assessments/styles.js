@@ -8,6 +8,9 @@ const styles = {
 		alignItems: 'center',
 		justifyContent: 'center',
 		background: '#ffffffe9',
+		'@media (max-width: 750px)': {
+			marginLeft: '12%'
+		}
 	},
 	page: {
 		width: '100%',
@@ -29,7 +32,6 @@ const styles = {
 		display: 'flex', 
 		alignItems: 'center', 
 		justifyContent: 'center',
-		marginLeft: '12%'
 	},
 }
 

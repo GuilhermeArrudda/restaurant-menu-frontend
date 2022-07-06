@@ -3,7 +3,7 @@ import { useState } from 'react'
 import OptionsMenu from '../../components/Menu/Menu'
 import styles from './styles'
 
-function Account() {
+function Assessments() {
 	const [showMenu, setShowMenu] = useState(false)
 
 	function toggleDrawer() {
@@ -19,4 +19,4 @@ function Account() {
 		</Box>
 	)
 }
-export default Account
+export default Assessments
